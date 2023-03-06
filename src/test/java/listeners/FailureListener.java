@@ -22,6 +22,8 @@ public class FailureListener extends Base implements ITestListener {
         logger.info("Failed because of - " + result.getThrowable());
         logger.info("---------------------------------------------------------------");
         WebDriver driver = ((BaseTest) result.getInstance()).getDriver();
+        System.out.println("on test s");
+        System.out.println(driver);
         if (driver != null) {
             captureScreen(driver);
         }

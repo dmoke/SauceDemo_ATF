@@ -22,32 +22,33 @@ public class BaseTest extends Base {
     public void setUp() {
         PropertyConfigurator.configure(loggerConfPath);
         logger.info("Started setting up the driver");
+        System.out.println("here");
         String headless = System.getProperty("headless");
         if (headless == null) {
             headless = "";
         }
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        this.driver = new ChromeDriver();
         if (headless.equals("headless")) {
-            driver.manage().window().setSize(new Dimension(1920, 1080));
+            this.driver.manage().window().setSize(new Dimension(1920, 1080));
         } else {
-            driver.manage().window().maximize();
+            this.driver.manage().window().maximize();
         }
-        jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor = (JavascriptExecutor) this.driver;
         logger.info("Finished setting up the driver");
     }
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
         logger.info("Quiting driver");
-        driver.quit();
+        this.driver.quit();
     }
 
     public void openUrl(String url) {
-        driver.get(url);
+        this.driver.get(url);
     }
 
     public WebDriver getDriver() {
-        return driver;
+        return this.driver;
     }
 }

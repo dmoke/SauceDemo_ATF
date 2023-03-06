@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 import java.io.File;
+import java.util.Arrays;
 
 public class Base extends Assert {
 
@@ -20,11 +21,18 @@ public class Base extends Assert {
             throw new RuntimeException(e);
         }
     }
+
     @SneakyThrows
     @Attachment(value = "Page screenshot", type = "image/png")
     protected byte[] captureScreen(WebDriver driver) {
-        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(screenshot, new File("./target/allure-results/screenshots/" + screenshot.getName()));
-        return Files.toByteArray(screenshot);
+        try {
+            System.out.println("here"+driver);
+            File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(screenshot, new File("./target/allure-results/screenshots/" + screenshot.getName()));
+            return Files.toByteArray(screenshot);
+        } catch (Exception e) {
+            System.out.println(Arrays.toString(e.getStackTrace()));
+        }
+        return null;
     }
 }
