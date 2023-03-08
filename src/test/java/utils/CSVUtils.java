@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CSVUtils {
-    private static final String CSV_FILE_PATH = "src/test/resources/login_data.csv";
+    private static final String CSV_FILE_PATH = "src/test/resources/positive_login_data.csv";
 
     public static List<LoginData> readCSVFile() {
         List<LoginData> loginDataList = new ArrayList<>();
