@@ -1,14 +1,12 @@
-name: Test
+name: Test and Deploy
+
 on:
   push:
     branches:
       - dev
-  pull_request:
-    branches:
-      - staging
 
 jobs:
-  test:
+  test-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -20,3 +18,12 @@ jobs:
         run: mvn dependency:resolve
       - name: Run tests
         run: mvn test -DsuiteXmlFile=src/test/java/suites/login.xml
+      - name: Push changes to staging
+        if: ${{ success() }}
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Merge changes from dev to staging branch"
+          commit_options: "--no-verify"
+          branch: staging
+          file_pattern: .
+          pull_branch: dev

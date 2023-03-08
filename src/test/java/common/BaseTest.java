@@ -4,10 +4,10 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -22,17 +22,16 @@ public class BaseTest extends Base {
     public void setUp() {
         PropertyConfigurator.configure(loggerConfPath);
         logger.info("Started setting up the driver");
-        String headless = System.getProperty("headless");
-        if (headless == null) {
-            headless = "";
-        }
         WebDriverManager.chromedriver().setup();
-        this.driver = new ChromeDriver();
-        if (headless.equals("headless")) {
-            this.driver.manage().window().setSize(new Dimension(1920, 1080));
-        } else {
-            this.driver.manage().window().maximize();
+        ChromeOptions options = new ChromeOptions();
+        if (System.getenv("CI") != null && System.getenv("CI").equals("true")) {
+            options.addArguments("--headless");
+            options.addArguments("--disable-gpu");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--window-size=1920,1080");
         }
+        this.driver = new ChromeDriver(options);
         jsExecutor = (JavascriptExecutor) this.driver;
         logger.info("Finished setting up the driver");
     }
