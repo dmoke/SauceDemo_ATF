@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 19.439 s <<< FAILURE! - in TestSuite
+loginTest(tests.LoginTests)  Time elapsed: 1.009 s  <<< FAILURE!
+java.lang.AssertionError: expected [https://www.saucedemo.com/inventory.html] but found [https://www.saucedemo.com/]
+	at tests.LoginTests.loginTest(LoginTests.java:24)
+
