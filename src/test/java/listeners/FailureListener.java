@@ -13,7 +13,7 @@ import org.testng.ITestResult;
 public class FailureListener extends Base implements ITestListener {
 
     Logger logger = LogManager.getLogger(FailureListener.class);
-    String loggerConfPath = "src/main/java/ui/test/properties/logger.properties";
+    String loggerConfPath = "src/test/java/properties/logger.properties";
 
     @Override
     public void onTestFailure(ITestResult result) {

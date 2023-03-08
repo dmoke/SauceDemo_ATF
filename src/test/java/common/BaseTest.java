@@ -22,7 +22,6 @@ public class BaseTest extends Base {
     public void setUp() {
         PropertyConfigurator.configure(loggerConfPath);
         logger.info("Started setting up the driver");
-        System.out.println("here");
         String headless = System.getProperty("headless");
         if (headless == null) {
             headless = "";
