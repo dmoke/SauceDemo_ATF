@@ -23,7 +23,7 @@ jobs:
           path: './src/test/java/properties/workflow.properties'
           properties: 'suite_path'
       - name: Run tests
-        run: mvn test -DsuiteXmlFile=${{ suite_path }}
+        run: mvn test -DsuiteXmlFile=${{ steps.read_property.outputs.suite_path }}
       - name: Commit test reports
         if: ${{ success() }}
         run: |
