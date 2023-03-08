@@ -18,6 +18,13 @@ jobs:
         run: mvn dependency:resolve
       - name: Run tests
         run: mvn test -DsuiteXmlFile=src/test/java/suites/login.xml
+      - name: Commit test reports
+        if: ${{ success() }}
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add target/*
+          git commit -m "Add test reports"
       - name: Push changes to staging
         if: ${{ success() }}
         uses: stefanzweifel/git-auto-commit-action@v4
