@@ -17,7 +17,7 @@ jobs:
       - name: Install dependencies
         run: mvn dependency:resolve
       - name: Run tests
-        run: mvn test -DsuiteXmlFile=src/test/java/suites/login.xml
+        run: mvn test -DsuiteXmlFile=${suite.path}
       - name: Commit test reports
         if: ${{ success() }}
         run: |
