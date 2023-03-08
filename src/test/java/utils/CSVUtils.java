@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Properties;
 
 public class CSVUtils {
-    private static final String CSV_FILE_PATH = readProperties("src/test/java/properties/login.properties", "data");
+    private static final String CSV_FILE_PATH = readProperties("src/test/java/properties/workflow.properties", "data");
 
     public static List<LoginData> readCSVFile() {
         List<LoginData> loginDataList = new ArrayList<>();
