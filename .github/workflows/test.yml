@@ -18,5 +18,7 @@ jobs:
           java-version: 11
       - name: Install dependencies
         run: mvn dependency:resolve
+      - name: Check Chrome version
+        run: google-chrome --version
       - name: Run tests
         run: mvn test -DsuiteXmlFile=src/test/java/suites/login.xml
