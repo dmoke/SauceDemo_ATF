@@ -9,7 +9,6 @@ import pages.LoginPage;
 
 
 public class LoginTests extends BaseTest {
-
     @Test(dataProvider = "loginDataProvider", dataProviderClass = LoginDataProvider.class)
     @Description("Positive Login test")
     public void loginTest(LoginData loginData) {
