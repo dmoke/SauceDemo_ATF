@@ -18,18 +18,19 @@ jobs:
         run: mvn dependency:resolve
       - name: Run tests
         run: mvn test -DsuiteXmlFile=src/test/java/suites/login.xml
-      - name: Commit test reports
+      - name: Checkout code
         uses: actions/checkout@v2
-        if: ${{ success() }}
+      - name: Auto-commit changes
         run: |
           git config --global user.email "github-bot@example.com"
           git config --global user.name "GitHub Bot"
           git commit -am "Auto-commit changes"
           git push
       - name: Pull changes to staging
+        if: ${{ success() }}
         uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.GH_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Merge changes from dev to staging"
           branch: staging
           title: "Merge changes from dev to staging"
