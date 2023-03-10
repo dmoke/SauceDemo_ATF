@@ -17,24 +17,24 @@ public class LoginPage implements Waitable {
 
     @Step("Entering Username")
     public LoginPage enterUsername(String username) {
-        this.waitForElementClickable(driver, LoginPageElements.USERNAME_INPUT_FIELD.xpath)
-                .sendKeys(username);
+        this.waitForElementClickable(driver, LoginPageElements.USERNAME_INPUT_FIELD.xpath).sendKeys(username);
         return this;
     }
+
     @Step("Entering Password")
     public LoginPage enterPassword(String password) {
-        this.waitForElementClickable(driver, LoginPageElements.PASSWORD_INPUT_FIELD.xpath)
-                .sendKeys(password);
+        this.waitForElementClickable(driver, LoginPageElements.PASSWORD_INPUT_FIELD.xpath).sendKeys(password);
         return this;
     }
+
     @Step("Submitting login form")
     public LoginPage pressSubmitButton() {
-        this.waitForElementClickable(driver, LoginPageElements.SUBMIT_BUTTON.xpath)
-                .click();
+        this.waitForElementClickable(driver, LoginPageElements.SUBMIT_BUTTON.xpath).click();
         return this;
     }
+
     @Step("Returns Current url")
-    public String returnUrl(){
+    public String returnUrl() {
         return this.driver.getCurrentUrl();
     }
 }
