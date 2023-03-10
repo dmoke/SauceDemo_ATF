@@ -24,7 +24,7 @@ jobs:
       - name: Run tests
         id: test_results
         run: |
-          mvn test -DsuiteXmlFile=src/test/java/suites/login.xml
+          mvn test -DsuiteXmlFile=src/test/java/suites/staging.xml
           echo "::set-output name=test_results::$(cat target/surefire-reports/TEST-*.xml)"
         shell: bash
 
