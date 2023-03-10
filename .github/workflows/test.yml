@@ -28,7 +28,7 @@ jobs:
           echo "::set-output name=test_results::$(cat target/surefire-reports/TEST-*.xml)"
         shell: bash
 
-  deploy:
+  deploy_to_staging:
     needs: test
     runs-on: ubuntu-latest
     steps:
