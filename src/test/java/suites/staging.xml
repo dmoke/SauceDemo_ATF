@@ -4,9 +4,15 @@
         <listener class-name="listeners.FailureListener"/>
     </listeners>
 
-    <test name="Staging tests">
+    <test name="Login tests">
         <classes>
             <class name="tests.LoginTests"/>
+        </classes>
+    </test>
+
+    <test name="Sidebar tests">
+        <classes>
+            <class name="tests.SideMenuTest"/>
         </classes>
     </test>
 
