@@ -25,12 +25,14 @@ jobs:
         run: |
           git config --global user.email "github-bot@example.com"
           git config --global user.name "GitHub Bot"
-          git commit -am "Auto-commit changes"
-          git push
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -am "Auto-commit changes"
+            git push
+          fi
       - name: Pull changes to staging
         uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
           commit-message: "Merge changes from dev to staging"
           branch: staging
           title: "Merge changes from dev to staging"
