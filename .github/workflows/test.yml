@@ -22,7 +22,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-m2-
       - name: Run tests
-        run: mvn test -DsuiteXmlFile=src/test/java/suites/login.xml
+        id: test_results
+        run: |
+          mvn test -DsuiteXmlFile=src/test/java/suites/login.xml
+          echo "::set-output name=test_results::$(cat target/surefire-reports/TEST-*.xml)"
+        shell: bash
 
   deploy:
     needs: test
@@ -48,15 +52,15 @@ jobs:
         with:
           author_name: GitHub Bot
           author_email: github-bot@example.com
-          message: "Auto-commit changes"
+          message: "Auto-commit changes - Test results: ${{ steps.test_results.outputs.test_results }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Pull changes to main
+      - name: Pull changes to staging
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.GH_TOKEN }}
-          commit-message: "Merge changes from staging to main"
-          branch: main
-          title: "Merge changes from staging to main"
+          commit-message: "Merge changes from dev to staging - Test results: ${{ steps.test_results.outputs.test_results }}"
+          branch: staging
+          title: "Merge changes from dev to staging"
           body: |
-            This is an automated pull request to merge changes from the staging branch to the main branch.
+            This is an automated pull request to merge changes from the dev branch to the staging branch.
