@@ -19,6 +19,7 @@ jobs:
       - name: Run tests
         run: mvn test -DsuiteXmlFile=src/test/java/suites/login.xml
       - name: Checkout code
+        if: ${{ success() }}
         uses: actions/checkout@v2
       - name: Auto-commit changes
         run: |
@@ -27,7 +28,6 @@ jobs:
           git commit -am "Auto-commit changes"
           git push
       - name: Pull changes to staging
-        if: ${{ success() }}
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
