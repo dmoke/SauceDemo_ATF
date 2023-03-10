@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Staging suite">
+    <listeners>
+        <listener class-name="listeners.FailureListener"/>
+    </listeners>
+
+    <test name="Staging tests">
+        <classes>
+            <class name="tests.LoginTests"/>
+        </classes>
+    </test>
+
+</suite>

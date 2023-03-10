@@ -2,6 +2,8 @@ elements\LoginPageElements.class
 common\BaseTest.class
 pages\LoginPage.class
 common\Waitable.class
+pages\SideBar.class
+elements\SideBarElements.class
 common\Base.class
 models\LoginData.class
 listeners\ExecutionTimeListener.class
@@ -10,4 +12,5 @@ listeners\RetryAnalyzer.class
 listeners\RetryTestListener.class
 utils\CSVUtils.class
 data_providers\LoginDataProvider.class
+tests\SideMenuTest.class
 listeners\FailureListener.class

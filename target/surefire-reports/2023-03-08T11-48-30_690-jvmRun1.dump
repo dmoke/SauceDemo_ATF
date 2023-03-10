@@ -1,9 +1,0 @@
-# Created on 2023-03-08T11:48:31.333
-org.apache.maven.surefire.testset.TestSetFailedException: Suite file C:\Users\38067\Dev\SauceDemo_ATF\src\suites\login.xml is not a valid file
-	at org.apache.maven.surefire.testng.TestNGXmlTestSuite.locateTestSets(TestNGXmlTestSuite.java:99)
-	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:119)
-	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:386)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:323)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:143)
-
-

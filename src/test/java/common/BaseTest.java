@@ -31,6 +31,7 @@ public class BaseTest extends Base {
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--window-size=1920,1080");
         }
+        options.addArguments("--remote-allow-origins=*");
         this.driver = new ChromeDriver(options);
         jsExecutor = (JavascriptExecutor) this.driver;
         logger.info("Finished setting up the driver");
